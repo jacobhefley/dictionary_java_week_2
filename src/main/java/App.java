@@ -1,64 +1,49 @@
-// import java.util.Map;
-// import java.util.HashMap;
+import java.util.*;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 import static spark.Spark.*;
-import java.util.*;
 
 public class App {
 
   public static void main(String[] args) {
+
     staticFileLocation("/public");
     String layout = "templates/layout.vtl";
 
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
+      model.put("words", Word.allWords());
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    post("/contacts", (request,response) -> {
+    post("/words", (request,response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
-      String firstName = request.queryParams("firstName");
-      String lastName = request.queryParams("lastName");
-      String homePhone = request.queryParams("homePhone");
-      String mobilePhone = request.queryParams("mobilePhone");
-      String workPhone = request.queryParams("workPhone");
-      String address = request.queryParams("address");
-      String email = request.queryParams("email");
-      Contact newContact = new Contact(firstName, lastName, homePhone, mobilePhone, workPhone, address, email);
+      String word = request.queryParams("word");
+      Word newWord = new Word(word);
+      model.put("word", word);
       model.put("template", "templates/success.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    get("/contacts", (request,response) -> {
+    get("/words/:id", (request, response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
-      model.put("contacts", Contact.all());
-      model.put("template", "templates/contacts.vtl");
+      int id = Integer.parseInt(request.params(":id"));
+      Word word = Word.find(Integer.parseInt(request.params(":id")));
+      model.put("id", id);
+      model.put("word", word);
+      model.put("template", "templates/word.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    post("/contactsupdated", (request,response) -> {
+    post("/definition", (request,response) -> {
       HashMap<String, Object> model = new HashMap<String, Object>();
-      String firstName = request.queryParams("firstName");
-      String lastName = request.queryParams("lastName");
-      String homePhone = request.queryParams("homePhone");
-      String mobilePhone = request.queryParams("mobilePhone");
-      String workPhone = request.queryParams("workPhone");
-      String address = request.queryParams("address");
-      String email = request.queryParams("email");
+      String definition = request.queryParams("definition");
       int id = Integer.parseInt(request.queryParams("id"));
-      Contact newContact = new Contact(firstName, lastName, homePhone, mobilePhone, workPhone, address, email, id);
-      model.put("template", "templates/contactsupdated.vtl");
-      return new ModelAndView(model, layout);
-    }, new VelocityTemplateEngine());
-
-
-    get("/contacts/:id", (request, response) -> {
-      HashMap<String, Object> model = new HashMap<String, Object>();
-      Contact contact = Contact.find(Integer.parseInt(request.params(":id")));
-      model.put("contact", contact);
-      model.put("template", "templates/contact.vtl");
+      Word newWord = Word.find(id);
+      newWord.addDefintion(definition);
+      model.put("definition", definition);
+      model.put("template", "templates/dsuccess.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 

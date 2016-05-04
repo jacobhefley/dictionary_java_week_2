@@ -1,0 +1,19 @@
+<h1 class="center">$word.getWord()</h1>
+<hr>
+#if($word)
+  <h2><ol>
+  #foreach($definition in $word.getWordDefintions())
+    <li><span style='color:#333;'>$definition</span></li>
+  #end
+  </ol></h2>
+#end
+<form action='/definition' method='post'>
+  <input name="word" id="word" value="$word.getWord()" type="hidden">
+  <div class="form-group form-inline">
+    <label for="definition">Add Definition:</label>
+    <input class="form-control" name="definition" id="definition" type="text">
+    <input name="id" id="id" type="hidden" value="$id">
+    <button type="submit" class="btn btn-lg btn-mycolor">Add!</button>
+  </div>
+
+</form>

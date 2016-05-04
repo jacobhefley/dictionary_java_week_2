@@ -1,8 +1,19 @@
-<h1>add a Word to the Dictionary</h1>
-<form action='/contacts' method='post'>
-  <div class="form-group">
-    <label for="userInput">First name:</label>
-    <input name="firstName" id="firstName" type="text">
+
+<div class="container">
+<div class="body">
+#if($words)
+  #foreach($word in $words)
+    <h1><a href="/words/$word.getId()">$word.getWord()</a></h1>
+    <hr>
+  #end
+#end
+<form action='/words' method='post' class="">
+  <div class="form-group form-inline" id="maininput">
+    <label for="word">Add Word:</label>
+    <input name="word" class="form-control" id="word" type="text">
+    <button type="submit" class="btn btn-lg btn-mycolor">Add!</button>
   </div>
-  <button type="submit" class="btn">Add!</button>
+
 </form>
+</div>
+</div>

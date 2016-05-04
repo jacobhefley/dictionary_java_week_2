@@ -1,19 +1,25 @@
-// import java.util.*;
+import java.util.*;
 
 public class Definition {
-  ArrayList<String> mDefinitions = new ArrayList<>();
-	String mLastDefinition;
-	private int hash;
 
-  public Definition(String d){
-  ArrayList<String> mDefinitions = new ArrayList<>();
-    mLastDefinition = d;
-    mDefinitions.add(mLastDefinition);
+  private ArrayList<String> mDefinitions = new ArrayList<String>();
+
+  public Definition(){
+    mDefinitions = new ArrayList<String>();
   }
 
-  public Definition addDefinition(String newD){
-  	mLastDefinition = newD;
-  	mDefinitions.add(mLastDefinition);
-  	return mDefinitions;
+  public Definition(String def){
+    String temp = def;
+    mDefinitions.add(temp);
   }
+
+  public void addDef(String newDef){
+    String temp = newDef;
+    mDefinitions.add(temp);
+  }
+
+  public ArrayList<String> getDef() {
+    return mDefinitions;
+  }
+  
 }
