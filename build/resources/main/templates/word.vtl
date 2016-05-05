@@ -1,20 +1,18 @@
-<h1>Basic Java Spark/Velocity Dictionary</h1>
-<h1 class="center">$word.getWord()</h1>
+<h2 class="center">$word.getWord()</h2>
 <hr>
 #if($word)
-  <h2><ol>
+  <h3><ol>
   #foreach($definition in $word.getWordDefintions())
     <li>$definition</li>
   #end
-  </ol></h2>
+  </ol></h3>
 #end
 <form action='/definition' method='post'>
   <input name="word" id="word" value="$word.getWord()" type="hidden">
   <div class="form-group form-inline">
-    <label for="definition">Add Definition:</label>
+    <label for="definition"><small>Add Definition:</small></label>
     <input class="form-control" name="definition" id="definition" type="text">
     <input name="id" id="id" type="hidden" value="$id">
     <button type="submit" class="btn btn-lg btn-success">+</button>
   </div>
-
 </form>

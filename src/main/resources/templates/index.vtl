@@ -1,9 +1,8 @@
 <h1>Basic Java Spark/Velocity Dictionary</h1>
-<div class="container">
-<div class="body">
+<hr>
 #if($words)
   #foreach($word in $words)
-    <h1><a href="/words/$word.getId()">$word.getWord()</a></h1>
+    <h3><a href="/words/$word.getId()">$word.getWord()</a></h3>
     <hr>
   #end
 #end
