@@ -43,7 +43,7 @@ public class App {
       Word newWord = Word.find(id);
       newWord.addDefintion(definition);
       model.put("definition", definition);
-      model.put("template", "templates/dsuccess.vtl");
+      model.put("template", "templates/defsuccess.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 

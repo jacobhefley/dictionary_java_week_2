@@ -10,7 +10,7 @@ public class Word {
 
   public Word(String word){
     mWord = word;
-    mWordDefinitions = new Definition(mWord);
+    mWordDefinitions = new Definition();
     mDictionary.add(this);
     mId = mDictionary.size();
   }
@@ -30,3 +30,12 @@ public class Word {
   public static ArrayList<Word> allWords() {
     return mDictionary;
   }
+  public static Word find(int id) {
+    try {
+      return mDictionary.get(id - 1);
+    }
+    catch (IndexOutOfBoundsException e) {
+      return null;
+    }
+  }
+}
