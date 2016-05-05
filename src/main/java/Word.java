@@ -18,8 +18,9 @@ public class Word {
   public ArrayList<String> getWordDefintions() {
     return mWordDefinitions.getDef();
   }
-  public void addDefintion(String newDef) {
+  public boolean addDefintion(String newDef) {
     mWordDefinitions.addDef(newDef);
+    return true;
   }
   public String getWord() {
     return mWord;
