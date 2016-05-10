@@ -6,7 +6,7 @@ public class Word {
   private String mWord;
   private Definition mWordDefinitions;
 
-  private static ArrayList<Word> mDictionary = new ArrayList<Word>();
+  public static ArrayList<Word> mDictionary = new ArrayList<Word>();
 
   public Word(String word){
     mWord = word;

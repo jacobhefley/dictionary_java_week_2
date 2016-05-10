@@ -21,5 +21,5 @@ public class Definition {
   public ArrayList<String> getDef() {
     return mDefinitions;
   }
-  
+
 }
