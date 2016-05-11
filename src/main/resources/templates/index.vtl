@@ -1,0 +1,18 @@
+<h1>Basic Java Spark/Velocity Dictionary</h1>
+<hr>
+#if($words)
+  #foreach($word in $words)
+    <h3><a href="/words/$word.getId()">$word.getWord()</a></h3>
+    <hr>
+  #end
+#end
+<form action='/words' method='post' class="">
+  <div class="form-group form-inline" id="maininput">
+    <label for="word">Add Word:</label>
+    <input name="word" class="form-control" id="word" type="text">
+    <button type="submit" class="btn btn-lg btn-success">+</button>
+  </div>
+
+</form>
+</div>
+</div>
